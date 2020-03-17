@@ -1,0 +1,19 @@
+{
+  "name": "marney-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gl-matrix.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gl-matrix": "^3.2.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
