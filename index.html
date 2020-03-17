@@ -1,5 +1,7 @@
-<html encoding="utf-8">
+<html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8" />
+    <title>Marney Miller</title>
     <style>
       body {
         color: white;
@@ -59,12 +61,11 @@
       var canvasH = document.body.clientHeight;
       canvas.width = canvasW; //document.width is obsolete
       canvas.height = canvasH; //document.height is obsolete
-      var ctx = canvas.getContext("2d");
+      var gl = canvas.getContext("webgl");
 
       const prussianBlue = "#0D275E";
-
-      ctx.fillStyle = prussianBlue;
-      ctx.fillRect(0, 0, canvasW, canvasH);
+      gl.clearColor(0.05, 0.15, 0.37, 1.0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
     </script>
   </body>
 </html>
