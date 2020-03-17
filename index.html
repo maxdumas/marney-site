@@ -1,56 +1,70 @@
 <html encoding="utf-8">
   <head>
     <style>
+      body {
+        color: white;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
       #canvas {
-        position: absolute;
+        position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+      }
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        margin: 16px;
+      }
+      .logo {
+        max-height: 128px;
+      }
+      .nav-right {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .nav-right > div {
+        margin: 0 16px;
+        text-transform: uppercase;
       }
     </style>
   </head>
   <body>
-    <main></main>
     <canvas id="canvas"></canvas>
+    <main class="content">
+      <header class="nav">
+        <div class="nav-left">
+          <div class="logo">
+            <img class="logo" src="./logo.png" />
+          </div>
+        </div>
+        <div class="nav-right">
+          <div>Work</div>
+          <div>Contact</div>
+        </div>
+      </header>
+    </main>
     <script>
-      const waves = [];
-      for (let i = 0; i < 4; ++i) {
-        for (let j = 0; j < 4; ++j) {
-          console.log("arpaw");
-          const x = 25 + j * 50; // x coordinate
-          const y = 25 + i * 50; // y coordinate
-          waves.push([x, y, (Math.random() + 1) * 5, 1]); // x, y, speed, lifetime in sec
-        }
-      }
+      var canvas = document.getElementById("canvas");
+      var canvasW = document.body.clientWidth;
+      var canvasH = document.body.clientHeight;
+      canvas.width = canvasW; //document.width is obsolete
+      canvas.height = canvasH; //document.height is obsolete
+      var ctx = canvas.getContext("2d");
 
-      let start = null;
-      function animate(ts) {
-        if (!start) {
-          start = ts;
-        }
-        const time = ts - start;
-        var canvas = document.getElementById("canvas");
-        var canvasW = document.body.clientWidth;
-        var canvasH = document.body.clientHeight;
-        canvas.width = canvasW; //document.width is obsolete
-        canvas.height = canvasH; //document.height is obsolete
-        var ctx = canvas.getContext("2d");
+      const prussianBlue = "#0D275E";
 
-        for (let [x, y, speed, lifetime] of waves) {
-          const x1 = x + speed * ((time / 1000) % lifetime);
-          const y1 = y - speed * ((time / 1000) % lifetime);
-
-          ctx.beginPath();
-          var radius = 20;
-          ctx.arc(x1, y1, radius, (5 * Math.PI) / 4, (17 * Math.PI) / 8);
-          ctx.stroke();
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
+      ctx.fillStyle = prussianBlue;
+      ctx.fillRect(0, 0, canvasW, canvasH);
     </script>
   </body>
 </html>
