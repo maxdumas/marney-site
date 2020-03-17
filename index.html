@@ -1,0 +1,56 @@
+<html encoding="utf-8">
+  <head>
+    <style>
+      #canvas {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+    <canvas id="canvas"></canvas>
+    <script>
+      const waves = [];
+      for (let i = 0; i < 4; ++i) {
+        for (let j = 0; j < 4; ++j) {
+          console.log("arpaw");
+          const x = 25 + j * 50; // x coordinate
+          const y = 25 + i * 50; // y coordinate
+          waves.push([x, y, (Math.random() + 1) * 5, 1]); // x, y, speed, lifetime in sec
+        }
+      }
+
+      let start = null;
+      function animate(ts) {
+        if (!start) {
+          start = ts;
+        }
+        const time = ts - start;
+        var canvas = document.getElementById("canvas");
+        var canvasW = document.body.clientWidth;
+        var canvasH = document.body.clientHeight;
+        canvas.width = canvasW; //document.width is obsolete
+        canvas.height = canvasH; //document.height is obsolete
+        var ctx = canvas.getContext("2d");
+
+        for (let [x, y, speed, lifetime] of waves) {
+          const x1 = x + speed * ((time / 1000) % lifetime);
+          const y1 = y - speed * ((time / 1000) % lifetime);
+
+          ctx.beginPath();
+          var radius = 20;
+          ctx.arc(x1, y1, radius, (5 * Math.PI) / 4, (17 * Math.PI) / 8);
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>
