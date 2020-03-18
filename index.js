@@ -210,7 +210,13 @@ function drawScene(gl, programInfo, buffers, now) {
     modelViewMatrix
   );
 
-  gl.uniform1f(programInfo.uniformLocations.iTime, now);
+  gl.uniform1f(programInfo.uniformLocations.time, now);
+
+  gl.uniform2f(
+    programInfo.uniformLocations.resolution,
+    document.body.clientWidth,
+    document.body.clientHeight
+  );
 
   {
     const offset = 0;
@@ -245,7 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "uProjectionMatrix"
       ),
       modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
-      iTime: gl.getUniformLocation(shaderProgram, "iTime")
+      time: gl.getUniformLocation(shaderProgram, "time"),
+      resolution: gl.getUniformLocation(shaderProgram, "resolution")
     }
   };
 
