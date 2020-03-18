@@ -78,36 +78,12 @@ function initBuffers(gl) {
 
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
-  const colors = [
-    1.0,
-    1.0,
-    1.0,
-    1.0, // white
-    1.0,
-    0.0,
-    0.0,
-    1.0, // red
-    0.0,
-    1.0,
-    0.0,
-    1.0, // green
-    0.0,
-    0.0,
-    1.0,
-    1.0 // blue
-  ];
-
-  const colorBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
-
   return {
-    position: positionBuffer,
-    color: colorBuffer
+    position: positionBuffer
   };
 }
 
-let squareRotation = 0.0;
+let squareRotation = Math.PI / 4;
 let then = 0;
 
 function drawScene(gl, programInfo, buffers, now) {
@@ -173,26 +149,6 @@ function drawScene(gl, programInfo, buffers, now) {
     gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
   }
 
-  // Tell WebGL how to pull out the colors from the color buffer
-  // into the vertexColor attribute.
-  {
-    const numComponents = 4;
-    const type = gl.FLOAT;
-    const normalize = false;
-    const stride = 0;
-    const offset = 0;
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-    gl.vertexAttribPointer(
-      programInfo.attribLocations.vertexColor,
-      numComponents,
-      type,
-      normalize,
-      stride,
-      offset
-    );
-    gl.enableVertexAttribArray(programInfo.attribLocations.vertexColor);
-  }
-
   // Tell WebGL to use our program when drawing
 
   gl.useProgram(programInfo.program);
@@ -224,10 +180,8 @@ function drawScene(gl, programInfo, buffers, now) {
     gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexCount);
   }
 
-  now /= 1000;
-  const deltaTime = now - then;
+  // const deltaTime = now - then;
   then = now;
-  squareRotation += deltaTime;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -242,8 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const programInfo = {
     program: shaderProgram,
     attribLocations: {
-      vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition"),
-      vertexColor: gl.getAttribLocation(shaderProgram, "aVertexColor")
+      vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition")
     },
     uniformLocations: {
       projectionMatrix: gl.getUniformLocation(
@@ -258,6 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const buffers = initBuffers(gl);
   function render(now) {
+    now /= 1000;
+
     drawScene(gl, programInfo, buffers, now);
     requestAnimationFrame(render);
   }
