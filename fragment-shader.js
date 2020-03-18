@@ -22,6 +22,9 @@ float getwaves(vec2 position, int iterations){
     float w = 0.0;
     float ws = 0.0;
     for(int i=0;i<ITERATIONS_NORMAL;i++){
+        if (i > iterations) {
+            break;
+        }
         vec2 p = vec2(sin(iter), cos(iter));
         vec2 res = wavedx(position, p, speed, phase, time);
         position += normalize(p) * res.y * weight * DRAG_MULT;
