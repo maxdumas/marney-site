@@ -108,8 +108,9 @@ function initBuffers(gl) {
 }
 
 let squareRotation = 0.0;
+let then = 0;
 
-function drawScene(gl, programInfo, buffers, deltaTime) {
+function drawScene(gl, programInfo, buffers, now) {
   gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
   gl.clearDepth(1.0); // Clear everything
   gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -209,12 +210,17 @@ function drawScene(gl, programInfo, buffers, deltaTime) {
     modelViewMatrix
   );
 
+  gl.uniform1f(programInfo.uniformLocations.iTime, now);
+
   {
     const offset = 0;
     const vertexCount = 4;
     gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexCount);
   }
 
+  now /= 1000;
+  const deltaTime = now - then;
+  then = now;
   squareRotation += deltaTime;
 }
 
@@ -238,17 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
         shaderProgram,
         "uProjectionMatrix"
       ),
-      modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix")
+      modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
+      iTime: gl.getUniformLocation(shaderProgram, "iTime")
     }
   };
 
   const buffers = initBuffers(gl);
-  let then = 0;
   function render(now) {
-    now /= 1000;
-    const deltaTime = now - then;
-    then = now;
-    drawScene(gl, programInfo, buffers, deltaTime);
+    drawScene(gl, programInfo, buffers, now);
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
