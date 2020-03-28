@@ -1,7 +1,7 @@
 import { mat4 } from "gl-matrix";
 
-import fsSource from "./fragment-shader";
-import vsSource from "./vertex-shader";
+import fsSource from "./fragment-shader.glsl";
+import vsSource from "./vertex-shader.glsl";
 
 //
 // Initialize a shader program, so WebGL knows how to draw our data

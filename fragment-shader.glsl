@@ -1,4 +1,3 @@
-export default `
 #define DRAG_MULT 0.048
 #define ITERATIONS_RAYMARCH 13
 #define ITERATIONS_NORMAL 48
@@ -160,4 +159,3 @@ void main()
 
 	gl_FragColor = vec4(C,1.0);
 }
-`;
