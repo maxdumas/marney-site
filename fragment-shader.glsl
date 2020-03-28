@@ -125,15 +125,22 @@ void main()
 	vec3 wceil = vec3(0.0, 0.0, 0.0); // The point defining the plane where highest point of the water is. This is by definition y=0.
 	vec3 orig = vec3(0.0, 2.0, 0.0); // The point from which all rays originate
 	vec3 ray = getRay(uv); // Get a ray shooting in the direction of the UV coordinate
-    // Find the intersection of the ray and the water ceiling plane
-	float hihit = intersectPlane(orig, ray, wceil, vec3(0.0, 1.0, 0.0));
+
+    // If the ray intersection occurred very close to or above the water surface, assume we intersected with the atmosphere
     if(ray.y >= -0.01){
-        vec3 C = getatm(ray) * 2.0 + sun(ray);
+        // Set the color for this pixel according to atmosphere rules
+        // First, get the color of the sky and then add the sun glare component
+        // vec3 C = getatm(ray) * 2.0 + sun(ray);
+        vec3 C = getatm(ray) * 2.0;
         //tonemapping
     	C = aces_tonemap(C);
-     	gl_FragColor = vec4( C,1.0);
+     	gl_FragColor = vec4(C, 1.0);
         return;
     }
+    // Otherwise, we calculate the shading of the water
+    // Find where on the ray it would intersect with the water ceiling plane
+	float hihit = intersectPlane(orig, ray, wceil, vec3(0.0, 1.0, 0.0));
+    // Find where on the ray it would intersect with the water floor plane
 	float lohit = intersectPlane(orig, ray, wfloor, vec3(0.0, 1.0, 0.0));
     vec3 hipos = orig + ray * hihit;
     vec3 lopos = orig + ray * lohit;
