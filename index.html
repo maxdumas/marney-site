@@ -28,18 +28,32 @@
       .logo {
         max-height: 128px;
       }
-      .nav-right {
+      .hero-container {
+        width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
+        justify-content: center;
       }
-      .nav-right > div {
-        margin: 0 16px;
-        text-transform: uppercase;
+      .hero {
+        border: 4px solid white;
+        height: 256px;
+        width: 256px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0.25, 0.25, 0.25, 0.25);
+        opacity: 0;
+
+      }
+
+      .hero.active {
+        opacity: 1;
+
+        transition: opacity 1s ease-in;
+
       }
     </style>
     <script src="./index.js"></script>
+
   </head>
   <body>
     <canvas id="canvas"></canvas>
@@ -50,11 +64,18 @@
             <img class="logo" src="./logo.png" />
           </div>
         </div>
-        <div class="nav-right">
-          <div>Work</div>
-          <div>Contact</div>
-        </div>
       </header>
+      <div class="hero-container">
+        <div id="hero" class="hero">
+          <h1>Portfolio</h1>
+        </div>
+      </div>
     </main>
+    <script>
+      setTimeout(() => {
+        const heroElement = document.getElementById('hero');
+        heroElement.classList.add('active');
+      }, 1000);
+    </script>
   </body>
 </html>
