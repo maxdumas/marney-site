@@ -93,7 +93,7 @@ vec3 extra_cheap_atmosphere(vec3 raydir, vec3 sundir){
 	return bluesky2 * (1.0 + 1.0 * pow(1.0 - raydir.y, 3.0)) + mymie * suncolor;
 }
 vec3 getatm(vec3 ray){
- 	return extra_cheap_atmosphere(ray, normalize(vec3(1.0))) * 0.5;
+ 	return extra_cheap_atmosphere(ray, normalize(vec3(1.0)));
 }
 
 float sun(vec3 ray){
@@ -130,8 +130,8 @@ void main()
     if(ray.y >= -0.01){
         // Set the color for this pixel according to atmosphere rules
         // First, get the color of the sky and then add the sun glare component
-        // vec3 C = getatm(ray) * 2.0 + sun(ray);
-        vec3 C = getatm(ray) * 2.0;
+        // vec3 C = getatm(ray) + sun(ray);
+        vec3 C = getatm(ray);
         //tonemapping
     	C = aces_tonemap(C);
      	gl_FragColor = vec4(C, 1.0);
@@ -142,6 +142,7 @@ void main()
 	float hihit = intersectPlane(orig, ray, wceil, vec3(0.0, 1.0, 0.0));
     // Find where on the ray it would intersect with the water floor plane
 	float lohit = intersectPlane(orig, ray, wfloor, vec3(0.0, 1.0, 0.0));
+    // Transform the intersection points into world coordinates
     vec3 hipos = orig + ray * hihit;
     vec3 lopos = orig + ray * lohit;
 	float dist = raymarchwater(orig, hipos, lopos, waterdepth);
@@ -153,7 +154,7 @@ void main()
     vec3 R = reflect(ray, N);
     float fresnel = (0.04 + (1.0-0.04)*(pow(1.0 - max(0.0, dot(-N, ray)), 5.0)));
 
-    vec3 C = fresnel * getatm(R) * 2.0 + fresnel * sun(R);
+    vec3 C = fresnel * getatm(R) + fresnel * sun(R);
     //tonemapping
     C = aces_tonemap(C);
 
