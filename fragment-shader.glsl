@@ -168,11 +168,16 @@ void main()
 
     // Calculate the wave surface normal at the current location
 	vec3 N = normal(pos.xz, 0.001, waterdepth);
+    // Gradually interpolate the normal to point directly upward as we move farther from the camera
+    // This creates an effect that looks like Rayleigh scattering
     N = mix(vec3(0.0, 1.0, 0.0), N, 1.0 / (dist * dist * 0.01 + 1.0));
+    // Reflect the camera ray off of the water
     vec3 R = reflect(ray, N);
+    // Calculate a fresnel effect
+    // TODO: Look into what this is actually doing. It appears to add like "depth" to the waves and darkens them
     float fresnel = (0.04 + (1.0-0.04)*(pow(1.0 - max(0.0, dot(-N, ray)), 5.0)));
 
-    vec3 C = fresnel * getatm(R) + fresnel * sun(R);
+    vec3 C = fresnel * getatm(R);
     //tonemapping
     C = aces_tonemap(C);
 
