@@ -1,6 +1,6 @@
 #define DRAG_MULT 0.048
-#define ITERATIONS_RAYMARCH 13
-#define ITERATIONS_NORMAL 48
+#define ITERATIONS_RAYMARCH 8
+#define ITERATIONS_NORMAL 15
 
 precision highp float;
 uniform lowp float time;
@@ -62,23 +62,16 @@ vec3 normal(vec2 pos, float e, float depth){
     return normalize(cross(normalize(a-vec3(pos.x - e, getwaves(pos.xy * 0.1 - ex.xy * 0.1, ITERATIONS_NORMAL) * depth, pos.y)),
                            normalize(a-vec3(pos.x, getwaves(pos.xy * 0.1 + ex.yx * 0.1, ITERATIONS_NORMAL) * depth, pos.y + e))));
 }
-mat3 rotmat(vec3 axis, float angle)
-{
-	axis = normalize(axis);
-	float s = sin(angle);
-	float c = cos(angle);
-	float oc = 1.0 - c;
-	return mat3(oc * axis.x * axis.x + c, oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,
-	oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,
-	oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c);
-}
 
+/**
+  Given a UV coordinate, generates a vector corresponding to the direction of a ray going from
+ */
 vec3 getRay(vec2 uv){
+    // Project the UV from [0, 1] space to [-1, 1] space and then scale the X component by the aspect ratio
     uv = (uv * 2.0 - 1.0) * vec2(resolution.x / resolution.y, 1.0);
-	vec3 proj = normalize(vec3(uv.x, uv.y, 1.0) + vec3(uv.x, uv.y, -1.0) * pow(length(uv), 2.0) * 0.05);
-    if(resolution.x < 400.0) return proj;
-	vec3 ray = rotmat(vec3(0.0, -1.0, 0.0), 3.0 * (resolution.x - 1.0)) * rotmat(vec3(1.0, 0.0, 0.0), 1.5 * (resolution.y - 1.0)) * proj;
-    return ray;
+    // Create a 3D vector for the direction.
+    // Add lens distortion by subtly stretching rays at the edges of the screen
+	return normalize(vec3(uv.x, uv.y, 1.0) + vec3(uv.x, uv.y, -1.0) * dot(uv, uv) * 0.05);
 }
 
 float intersectPlane(vec3 origin, vec3 direction, vec3 point, vec3 normal)
@@ -101,7 +94,6 @@ vec3 extra_cheap_atmosphere(vec3 raydir, vec3 sundir){
 }
 vec3 getatm(vec3 ray){
  	return extra_cheap_atmosphere(ray, normalize(vec3(1.0))) * 0.5;
-
 }
 
 float sun(vec3 ray){
@@ -128,11 +120,12 @@ void main()
 {
 	vec2 uv = gl_FragCoord.xy / resolution.xy;
 
-	float waterdepth = 2.1;
-	vec3 wfloor = vec3(0.0, -waterdepth, 0.0);
-	vec3 wceil = vec3(0.0, 0.0, 0.0);
-	vec3 orig = vec3(0.0, 2.0, 0.0);
-	vec3 ray = getRay(uv);
+	float waterdepth = 2.1; // The maximum amount a wave can *lower* the wave surface
+	vec3 wfloor = vec3(0.0, -waterdepth, 0.0); // The point defining the plane where the lowest point of the water is
+	vec3 wceil = vec3(0.0, 0.0, 0.0); // The point defining the plane where highest point of the water is. This is by definition y=0.
+	vec3 orig = vec3(0.0, 2.0, 0.0); // The point from which all rays originate
+	vec3 ray = getRay(uv); // Get a ray shooting in the direction of the UV coordinate
+    // Find the intersection of the ray and the water ceiling plane
 	float hihit = intersectPlane(orig, ray, wceil, vec3(0.0, 1.0, 0.0));
     if(ray.y >= -0.01){
         vec3 C = getatm(ray) * 2.0 + sun(ray);
