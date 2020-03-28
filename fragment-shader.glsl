@@ -1,6 +1,10 @@
 #define DRAG_MULT 0.048
-#define ITERATIONS_RAYMARCH 8
-#define ITERATIONS_NORMAL 15
+// Determines how many sine waves are composed for generating the surface geometry
+// This is slower
+#define ITERATIONS_RAYMARCH 4
+// Determines how many sine waves are composed for calculating the surface normals
+// This is faster
+#define ITERATIONS_NORMAL 32
 
 precision highp float;
 uniform lowp float time;
@@ -37,18 +41,24 @@ float getwaves(vec2 position, int iterations){
     return w / ws;
 }
 
+// Calculates surface geometry of the water by marching from a starting point above the water
+// until the ray is below the water. Then returns the distance from intersection point to the camera
 float raymarchwater(vec3 camera, vec3 start, vec3 end, float depth){
     vec3 pos = start;
     float h = 0.0;
-    float hupper = depth;
-    float hlower = 0.0;
-    vec2 zer = vec2(0.0);
+    // Create a ray pointing from the start point to the end point
     vec3 dir = normalize(end - start);
+    // TODO: Tweak this maximum iteration number. What's the failure case here?
     for(int i=0;i<318;i++){
+        // Calculate the water height along the XZ plane where we currently are along the wave
+        // It has the depth subtracted from it to ensure that the maximum height possible is 0
         h = getwaves(pos.xz * 0.1, ITERATIONS_RAYMARCH) * depth - depth;
+        // If the waves height is nearly above our position or is above it, then we're done.
         if(h + 0.01 > pos.y) {
             return distance(pos, camera);
         }
+        // Otherwise march along the way, but scaling the marching according to
+        // how close we are to the water height already
         pos += dir * (pos.y - h);
     }
     return -1.0;
@@ -57,10 +67,16 @@ float raymarchwater(vec3 camera, vec3 start, vec3 end, float depth){
 float H = 0.0;
 vec3 normal(vec2 pos, float e, float depth){
     vec2 ex = vec2(e, 0);
-    H = getwaves(pos.xy * 0.1, ITERATIONS_NORMAL) * depth;
+    // Calculate the water height at the current position.
+    H = getwaves(pos * 0.1, ITERATIONS_NORMAL) * depth;
+    // Create a world position for the water height
     vec3 a = vec3(pos.x, H, pos.y);
-    return normalize(cross(normalize(a-vec3(pos.x - e, getwaves(pos.xy * 0.1 - ex.xy * 0.1, ITERATIONS_NORMAL) * depth, pos.y)),
-                           normalize(a-vec3(pos.x, getwaves(pos.xy * 0.1 + ex.yx * 0.1, ITERATIONS_NORMAL) * depth, pos.y + e))));
+    // Calculate the water height at a different point a small distance along the X-axis
+    vec3 ax = vec3(pos.x - e, getwaves(pos * 0.1 - ex.xy * 0.1, ITERATIONS_NORMAL) * depth, pos.y);
+    // Calculate the water height at a different point a small distance along the Z-axis (here called the Y)
+    vec3 az = vec3(pos.x, getwaves(pos * 0.1 + ex.yx * 0.1, ITERATIONS_NORMAL) * depth, pos.y + e);
+    // Calculate the direction of the normal with respect to the change along the X and Z axes
+    return normalize(cross(normalize(a - ax), normalize(a - az)));
 }
 
 /**
@@ -138,18 +154,20 @@ void main()
         return;
     }
     // Otherwise, we calculate the shading of the water
-    // Find where on the ray it would intersect with the water ceiling plane
+    // Find where on the camera ray it would intersect with the water ceiling plane
 	float hihit = intersectPlane(orig, ray, wceil, vec3(0.0, 1.0, 0.0));
-    // Find where on the ray it would intersect with the water floor plane
+    // Find where on the camera ray it would intersect with the water floor plane
 	float lohit = intersectPlane(orig, ray, wfloor, vec3(0.0, 1.0, 0.0));
     // Transform the intersection points into world coordinates
     vec3 hipos = orig + ray * hihit;
     vec3 lopos = orig + ray * lohit;
+    // Find where on the camera ray it would intersect with the water itself
 	float dist = raymarchwater(orig, hipos, lopos, waterdepth);
+    // Transform the intersection point into world coordinates
     vec3 pos = orig + ray * dist;
 
+    // Calculate the wave surface normal at the current location
 	vec3 N = normal(pos.xz, 0.001, waterdepth);
-    vec2 velocity = N.xz * (1.0 - N.y);
     N = mix(vec3(0.0, 1.0, 0.0), N, 1.0 / (dist * dist * 0.01 + 1.0));
     vec3 R = reflect(ray, N);
     float fresnel = (0.04 + (1.0-0.04)*(pow(1.0 - max(0.0, dot(-N, ray)), 5.0)));
