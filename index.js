@@ -1,5 +1,3 @@
-import { mat4 } from "gl-matrix";
-
 import fsSource from "./fragment-shader.glsl";
 import vsSource from "./vertex-shader.glsl";
 
@@ -83,7 +81,6 @@ function initBuffers(gl) {
   };
 }
 
-let squareRotation = Math.PI / 4;
 let then = 0;
 
 function drawScene(gl, programInfo, buffers, now) {
@@ -95,38 +92,6 @@ function drawScene(gl, programInfo, buffers, now) {
   // Clear the canvas before we start drawing on it.
 
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-  // Create a perspective matrix, a special matrix that is
-  // used to simulate the distortion of perspective in a camera.
-  // Our field of view is 45 degrees, with a width/height
-  // ratio that matches the display size of the canvas
-  // and we only want to see objects between 0.1 units
-  // and 100 units away from the camera.
-
-  const fieldOfView = (45 * Math.PI) / 180; // in radians
-  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
-  const zNear = 0.1;
-  const zFar = 100.0;
-  const projectionMatrix = mat4.create();
-
-  // note: glmatrix.js always has the first argument
-  // as the destination to receive the result.
-  mat4.perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
-
-  // Set the drawing position to the "identity" point, which is
-  // the center of the scene.
-  const modelViewMatrix = mat4.create();
-
-  // Now move the drawing position a bit to where we want to
-  // start drawing the square.
-
-  mat4.translate(
-    modelViewMatrix, // destination matrix
-    modelViewMatrix, // matrix to translate
-    [-0.0, 0.0, -6.0]
-  ); // amount to translate
-
-  mat4.rotate(modelViewMatrix, modelViewMatrix, squareRotation, [0, 0, 1]);
 
   // Tell WebGL how to pull out the positions from the position
   // buffer into the vertexPosition attribute.
@@ -154,17 +119,6 @@ function drawScene(gl, programInfo, buffers, now) {
   gl.useProgram(programInfo.program);
 
   // Set the shader uniforms
-
-  gl.uniformMatrix4fv(
-    programInfo.uniformLocations.projectionMatrix,
-    false,
-    projectionMatrix
-  );
-  gl.uniformMatrix4fv(
-    programInfo.uniformLocations.modelViewMatrix,
-    false,
-    modelViewMatrix
-  );
 
   gl.uniform1f(programInfo.uniformLocations.time, now);
 
@@ -199,11 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
       vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition")
     },
     uniformLocations: {
-      projectionMatrix: gl.getUniformLocation(
-        shaderProgram,
-        "uProjectionMatrix"
-      ),
-      modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
       time: gl.getUniformLocation(shaderProgram, "time"),
       resolution: gl.getUniformLocation(shaderProgram, "resolution")
     }
