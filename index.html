@@ -5,7 +5,7 @@
     <style>
       body {
         color: white;
-        font-family: "Avenir Next", Arial, Helvetica, sans-serif;
+        font-family: cursive;
       }
       #canvas {
         position: fixed;
@@ -34,26 +34,36 @@
         justify-content: center;
       }
       .hero {
-        border: 4px solid white;
+        font-family: cursive;
         height: 256px;
         width: 256px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0.25, 0.25, 0.25, 0.25);
         opacity: 0;
+        background-image: url("./hero-border.svg");
+        background-repeat: no-repeat;
+        background-position-y: 1px;
+      }
 
+      .hero-clickable {
+        width: calc(256px - 68px);
+        height: calc(256px - 69px);
+        background-color: rgba(0.25, 0.25, 0.25, 0.25);
+        border: 4px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
       }
 
       .hero.active {
         opacity: 1;
 
         transition: opacity 1s ease-in;
-
       }
     </style>
     <script src="./index.js"></script>
-
   </head>
   <body>
     <canvas id="canvas"></canvas>
@@ -67,14 +77,16 @@
       </header>
       <div class="hero-container">
         <div id="hero" class="hero">
-          <h1>Portfolio</h1>
+          <div class="hero-clickable">
+            <h1>Portfolio</h1>
+          </div>
         </div>
       </div>
     </main>
     <script>
       setTimeout(() => {
-        const heroElement = document.getElementById('hero');
-        heroElement.classList.add('active');
+        const heroElement = document.getElementById("hero");
+        heroElement.classList.add("active");
       }, 1000);
     </script>
   </body>
