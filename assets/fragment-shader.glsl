@@ -9,6 +9,7 @@
 precision highp float;
 uniform lowp float time;
 uniform lowp vec2 resolution;
+uniform lowp vec2 lookPos;
 
 vec2 wavedx(vec2 position, vec2 direction, float speed, float frequency, float timeshift) {
     float x = dot(direction, position) * frequency + timeshift * speed;
@@ -79,6 +80,17 @@ vec3 normal(vec2 pos, float e, float depth) {
     return normalize(cross(normalize(a - ax), normalize(a - az)));
 }
 
+mat3 rotmat(vec3 axis, float angle)
+{
+	axis = normalize(axis);
+	float s = sin(angle);
+	float c = cos(angle);
+	float oc = 1.0 - c;
+	return mat3(oc * axis.x * axis.x + c, oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s, 
+	oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s, 
+	oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c);
+}
+
 /**
   Given a UV coordinate, generates a vector corresponding to the direction of a ray going from
  */
@@ -87,7 +99,8 @@ vec3 getRay(vec2 uv) {
     uv = (uv * 2.0 - 1.0) * vec2(resolution.x / resolution.y, 1.0);
     // Create a 3D vector for the direction.
     // Add lens distortion by subtly stretching rays at the edges of the screen
-    return normalize(vec3(uv.x, uv.y, 1.0) + vec3(uv.x, uv.y, -1.0) * dot(uv, uv) * 0.05);
+    vec3 proj = normalize(vec3(uv.x, uv.y, 1.0) + vec3(uv.x, uv.y, -1.0) * dot(uv, uv) * 0.05);
+    return rotmat(vec3(0.0, -1.0, 0.0), 3.0 * (lookPos.x * 2.0 - 1.0)) * rotmat(vec3(1.0, 0.0, 0.0), 1.5 * (lookPos.y * 2.0 - 1.0)) * proj;
 }
 
 float intersectPlane(vec3 origin, vec3 direction, vec3 point, vec3 normal) {

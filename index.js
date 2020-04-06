@@ -82,6 +82,7 @@ function initBuffers(gl) {
 }
 
 let then = 0;
+let lookAngle = 0.5;
 
 function drawScene(gl, programInfo, buffers, now) {
   gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
@@ -128,6 +129,8 @@ function drawScene(gl, programInfo, buffers, now) {
     document.body.clientHeight
   );
 
+  gl.uniform2f(programInfo.uniformLocations.lookPos, 0.0, lookAngle);
+
   {
     const offset = 0;
     const vertexCount = 4;
@@ -154,7 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     uniformLocations: {
       time: gl.getUniformLocation(shaderProgram, "time"),
-      resolution: gl.getUniformLocation(shaderProgram, "resolution")
+      resolution: gl.getUniformLocation(shaderProgram, "resolution"),
+      lookPos: gl.getUniformLocation(shaderProgram, "lookPos")
     }
   };
 
@@ -166,4 +170,25 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
+
+  const button = document.getElementById("main-button");
+  button.addEventListener("click", () => {
+    let then = 0;
+    function render(now) {
+      now /= 1000;
+      if (then === 0) {
+        then = now;
+      }
+
+      lookAngle += 0.25 * (now - then);
+      then = now;
+      if (lookAngle < 1.0) {
+        requestAnimationFrame(render);
+      }
+    }
+    requestAnimationFrame(render);
+
+    const heroElement = document.getElementById("hero");
+    heroElement.classList.remove("active");
+  });
 });
