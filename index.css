@@ -1,5 +1,6 @@
 body {
   color: white;
+  background-color: rgb(123, 135, 149);
   font-family: cursive;
 }
 #canvas {
