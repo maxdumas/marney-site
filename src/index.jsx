@@ -1,9 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./index.css";
+import logoImage from "../assets/logo.png";
 import { initializeBackground } from "./background";
 import Home from "./components/home";
+import Gallery from "./components/gallery";
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("canvas");
@@ -27,13 +30,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     requestAnimationFrame(render);
-
-    const heroElement = document.getElementById("hero");
-    heroElement.classList.remove("active");
   };
 
   render(
-    <Home onButtonClick={panUpTransition} />,
+    <Router>
+      <div>
+        <header className="nav">
+          <div className="nav-left">
+            <div className="logo">
+              <img className="logo" src={logoImage} />
+            </div>
+          </div>
+        </header>
+
+        <Switch>
+          <Route exact path="/">
+            <Home onButtonClick={panUpTransition} />
+          </Route>
+          <Route path="/makes/:id">
+            <Gallery />
+          </Route>
+        </Switch>
+      </div>
+    </Router>,
     document.getElementById("app")
   );
 });
