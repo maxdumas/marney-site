@@ -1,5 +1,5 @@
-import fsSource from "./assets/fragment-shader.glsl";
-import vsSource from "./assets/vertex-shader.glsl";
+import fsSource from "./fragment-shader.glsl";
+import vsSource from "./vertex-shader.glsl";
 
 // Initialize a shader program, so WebGL knows how to draw our data
 function initShaderProgram(gl, vsSource, fsSource) {

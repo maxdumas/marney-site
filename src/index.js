@@ -1,3 +1,4 @@
+import "./index.css";
 import { initializeBackground } from "./background";
 
 document.addEventListener("DOMContentLoaded", () => {
