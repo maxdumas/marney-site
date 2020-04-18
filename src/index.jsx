@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   render(
-    React.createElement(Home, { onButtonClick: panUpTransition }),
+    <Home onButtonClick={panUpTransition} />,
     document.getElementById("app")
   );
 });
