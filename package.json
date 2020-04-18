@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "parcel serve index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html && rsync -a static/. dist"
   },
   "keywords": [],
   "author": "",
