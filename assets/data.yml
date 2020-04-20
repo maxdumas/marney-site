@@ -1,0 +1,39 @@
+---
+projects:
+  art:
+    - id: digital-art
+      title: Digital Art
+      description: >
+        I am the doom tree
+      images:
+        - name: Hizzy
+          filename: 0
+    - id: dragons-den
+      title: Dragon's Den
+      description: >
+        Yo this project was sick yo
+      images:
+        - name: Slide 1
+          filename: Slide1
+        - name: Slide 2
+          filename: Slide2
+        - name: Slide 3
+          filename: Slide3
+        - name: Slide 4
+          filename: Slide4
+        - name: Slide 5
+          filename: Slide5
+  productions:
+    - id: techniques
+      title: Techniques
+      description: >
+        IIIIDDDDDDROOOOOOOO
+      images:
+        - name: Face
+          filename: face
+        - name: Mand
+          filename: mand
+        - name: Tiles
+          filename: tiles
+        - name: Wood
+          filename: wood

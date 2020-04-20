@@ -1,7 +1,11 @@
+@font-face {
+  font-family: "Homemade Apple";
+  src: url("../assets/HomemadeApple-Regular.ttf");
+}
+
 body {
-  color: white;
   background-color: rgb(123, 135, 149);
-  font-family: cursive;
+  font-family: "Homemade Apple";
 }
 #canvas {
   position: fixed;

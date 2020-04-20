@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <Route exact path="/">
             <Home onButtonClick={panUpTransition} />
           </Route>
-          <Route path="/makes/:id">
+          <Route path="/makes/:category">
             <Gallery />
           </Route>
         </Switch>
