@@ -32,7 +32,6 @@ const Project = () => {
           textAlign: "center",
           fontSize: "24px",
           boxShadow: "5px 0px 10px rgba(0, 0, 0, 0.25)",
-          maxWidth: "500px",
         }}
       >
         <span style={{ display: "block", marginBottom: "16px" }}>
@@ -62,10 +61,8 @@ const Project = () => {
       </section>
       <section
         style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          columnWidth: 500,
+          columnGap: 0,
         }}
       >
         {project.images.map(getImageContainer)}
