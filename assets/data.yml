@@ -8,6 +8,33 @@ projects:
       images:
         - name: Hizzy
           filename: 0
+        - name: Hizzo
+          filename: 1
+        - name: Hizza
+          filename: 2
+        - name: Hizzd
+          filename: 3
+    - id: digital-art
+      title: Digital Art
+      description: >
+        I am the doom tree
+      images:
+        - name: Hizzy
+          filename: 0
+    - id: digital-art
+      title: Digital Art
+      description: >
+        I am the doom tree
+      images:
+        - name: Hizzy
+          filename: 0
+    - id: digital-art
+      title: Digital Art
+      description: >
+        I am the doom tree
+      images:
+        - name: Hizzy
+          filename: 0
     - id: dragons-den
       title: Dragon's Den
       description: >

@@ -25,16 +25,18 @@ const Background = ({ lookAngle }) => {
           },
         });
       }
-      handle = requestAnimationFrame(render);
+      // The image is static if we are looking straight up, so don't bother
+      // re-rendering if we get to that point.
+      if (lookAngle < 0.99) {
+        handle = requestAnimationFrame(render);
+      }
     }
     handle = requestAnimationFrame(render);
 
     return () => {
       cancelAnimationFrame(handle);
     };
-  }, []);
-
-  console.log("rerendering");
+  }, [lookAngle]);
 
   return (
     <Node
@@ -45,7 +47,7 @@ const Background = ({ lookAngle }) => {
         lookPos: [0.0, lookAngle],
         resolution: [document.body.clientWidth, document.body.clientHeight],
       }}
-    ></Node>
+    />
   );
 };
 

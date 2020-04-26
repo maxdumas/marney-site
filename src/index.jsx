@@ -8,6 +8,7 @@ import logoImage from "../assets/logo.png";
 import Background from "./components/background/index";
 import Home from "./components/home";
 import Gallery from "./components/gallery";
+import Project from "./components/project";
 
 document.addEventListener("DOMContentLoaded", () => {
   render(
@@ -24,27 +25,28 @@ document.addEventListener("DOMContentLoaded", () => {
         height={document.body.clientHeight}
         pixelRatio={1}
       >
-        <Background lookAngle={0.5} />
+        <Background lookAngle={1.0} />
       </Surface>
       <main className="content">
-        <div>
-          <header className="nav">
-            <div className="nav-left">
-              <div className="logo">
-                <img className="logo" src={logoImage} />
-              </div>
-            </div>
-          </header>
+        <header className="nav">
+          <div className="nav-left">
+            <a href="/" className="logo">
+              <img className="logo" src={logoImage} />
+            </a>
+          </div>
+        </header>
 
-          <Switch>
-            <Route exact path="/">
-              <Home onButtonClick={() => {}} />
-            </Route>
-            <Route path="/makes/:category">
-              <Gallery />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/">
+            <Home onButtonClick={() => {}} />
+          </Route>
+          <Route path="/makes/:category">
+            <Gallery />
+          </Route>
+          <Route path="/made/:projectId">
+            <Project />
+          </Route>
+        </Switch>
       </main>
     </Router>,
     document.getElementById("app")

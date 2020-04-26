@@ -1,24 +1,51 @@
 @font-face {
-  font-family: "Homemade Apple";
-  src: url("../assets/HomemadeApple-Regular.ttf");
+  font-family: "Amatic";
+  src: url("../assets/AmaticSC-Regular.ttf");
 }
 
 body {
   background-color: rgb(123, 135, 149);
-  font-family: "Homemade Apple";
+  font-family: "Amatic";
+  color: white;
+  font-size: 16pt;
 }
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 34pt;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+p {
+  font-family: "Avenir Next", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  margin: 0;
+}
+
 #app {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .content {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
 }
 .nav {
   display: flex;
