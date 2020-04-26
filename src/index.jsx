@@ -9,6 +9,7 @@ import Background from "./components/background/index";
 import Home from "./components/home";
 import Gallery from "./components/gallery";
 import Project from "./components/project";
+import Portfolio from "./components/portfolio";
 
 document.addEventListener("DOMContentLoaded", () => {
   render(
@@ -34,11 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <img className="logo" src={logoImage} />
             </a>
           </div>
+          <div className="nav-right">
+            <a href="/is">Contact/About</a>
+          </div>
         </header>
 
         <Switch>
           <Route exact path="/">
             <Home onButtonClick={() => {}} />
+          </Route>
+          <Route exact path="/makes">
+            <Portfolio />
           </Route>
           <Route path="/makes/:category">
             <Gallery />

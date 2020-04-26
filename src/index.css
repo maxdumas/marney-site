@@ -50,7 +50,11 @@ p {
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 16px;
+}
+.nav-right {
+  margin-right: 32px;
 }
 .logo {
   max-height: 128px;

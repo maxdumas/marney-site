@@ -1,6 +1,13 @@
 ---
+categories:
+  - id: digital-works
+    name: Digital Works
+  - id: productions
+    name: Production Work
+  - id: art-work
+    name: Art Work
 projects:
-  art:
+  digital-works:
     - id: digital-art
       title: Digital Art
       description: >

@@ -20,7 +20,7 @@ const Background = ({ lookAngle }) => {
         node.current.setDrawProps({
           uniforms: {
             time,
-            lookPos: [0.0, lookAngle],
+            lookPos: [0.5, lookAngle],
             resolution: [document.body.clientWidth, document.body.clientHeight],
           },
         });

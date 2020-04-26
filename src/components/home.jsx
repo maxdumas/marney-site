@@ -15,7 +15,7 @@ const Home = ({ onButtonClick }) => {
 
   const onClick = () => {
     setIsActive(!isActive);
-    history.push("/makes/films");
+    history.push("/makes");
     onButtonClick();
   };
 
