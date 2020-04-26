@@ -6,10 +6,11 @@
 // This is faster
 #define ITERATIONS_NORMAL 32
 
-precision highp float;
-uniform lowp float time;
-uniform lowp vec2 resolution;
-uniform lowp vec2 lookPos;
+precision lowp float;
+varying vec2 uv;
+uniform float time;
+uniform vec2 resolution;
+uniform vec2 lookPos;
 
 vec2 wavedx(vec2 position, vec2 direction, float speed, float frequency, float timeshift) {
     float x = dot(direction, position) * frequency + timeshift * speed;
@@ -146,8 +147,6 @@ vec3 aces_tonemap(vec3 color) {
     return pow(clamp(m2 * (a / b), 0.0, 1.0), vec3(1.0 / 2.2));
 }
 void main() {
-    vec2 uv = gl_FragCoord.xy / resolution.xy;
-
     float waterdepth = 2.1; // The maximum amount a wave can *lower* the wave surface
     vec3 wfloor = vec3(0.0, -waterdepth, 0.0); // The point defining the plane where the lowest point of the water is
     vec3 wceil = vec3(0.0, 0.0, 0.0); // The point defining the plane where highest point of the water is. This is by definition y=0.

@@ -1,7 +1,7 @@
 TODO:
 [x] Introduce React with Parcel.
 [x] Add react routing
-[ ] Integrate per-page routing with the look position of the screen
+[x] Integrate per-page routing with the look position of the screen. Use gl-react.
 [ ] Create gallery pages with sample content
 [x] Create simple YAML-based templating system to generate gallery content
 [ ] Correctly transition the look position for the background as you navigate. This should, again, be tied to the routing.

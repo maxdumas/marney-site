@@ -7,7 +7,7 @@ body {
   background-color: rgb(123, 135, 149);
   font-family: "Homemade Apple";
 }
-#canvas {
+#app {
   position: fixed;
   top: 0;
   left: 0;

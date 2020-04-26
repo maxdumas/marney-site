@@ -1,57 +1,51 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Surface } from "gl-react-dom";
 
 import "./index.css";
 import logoImage from "../assets/logo.png";
-import { initializeBackground } from "./background";
+import Background from "./components/background/index";
 import Home from "./components/home";
 import Gallery from "./components/gallery";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("canvas");
-  canvas.width = document.body.clientWidth;
-  canvas.height = document.body.clientHeight;
-  const backgroundContext = null; //initializeBackground(canvas);
-
-  // TODO: Everything about this is pretty rough. Let's find a more reasonable solution here.
-  const panUpTransition = () => {
-    let then = 0;
-    function render(now) {
-      now /= 1000;
-      if (then === 0) {
-        then = now;
-      }
-
-      backgroundContext.lookAngle += 0.25 * (now - then);
-      then = now;
-      if (backgroundContext.lookAngle < 1.0) {
-        requestAnimationFrame(render);
-      }
-    }
-    requestAnimationFrame(render);
-  };
-
   render(
     <Router>
-      <div>
-        <header className="nav">
-          <div className="nav-left">
-            <div className="logo">
-              <img className="logo" src={logoImage} />
+      <Surface
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+        }}
+        width={document.body.clientWidth}
+        height={document.body.clientHeight}
+        pixelRatio={1}
+      >
+        <Background lookAngle={0.5} />
+      </Surface>
+      <main className="content">
+        <div>
+          <header className="nav">
+            <div className="nav-left">
+              <div className="logo">
+                <img className="logo" src={logoImage} />
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <Switch>
-          <Route exact path="/">
-            <Home onButtonClick={panUpTransition} />
-          </Route>
-          <Route path="/makes/:category">
-            <Gallery />
-          </Route>
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path="/">
+              <Home onButtonClick={() => {}} />
+            </Route>
+            <Route path="/makes/:category">
+              <Gallery />
+            </Route>
+          </Switch>
+        </div>
+      </main>
     </Router>,
     document.getElementById("app")
   );
