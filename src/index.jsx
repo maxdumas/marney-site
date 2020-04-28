@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Gallery from "./components/gallery";
 import Project from "./components/project";
 import Portfolio from "./components/portfolio";
+import About from "./components/about";
 
 document.addEventListener("DOMContentLoaded", () => {
   render(
@@ -52,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </Route>
           <Route path="/made/:projectId">
             <Project />
+          </Route>
+          <Route path="/is">
+            <About />
           </Route>
         </Switch>
       </main>

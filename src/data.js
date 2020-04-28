@@ -2,6 +2,8 @@ import data from "../assets/data.yml";
 
 export const getCategories = () => data.categories;
 
+export const getAboutData = () => data.about;
+
 export const getProjectsForCategory = (category) => data.projects[category];
 
 export const getProjectById = (id) =>
