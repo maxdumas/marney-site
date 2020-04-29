@@ -1,6 +1,7 @@
 import React from "react";
 
 import portraitImage from "../../assets/portrait.jpg";
+import resume from "../../assets/resume.pdf";
 import { getAboutData } from "../data";
 
 const About = () => {
@@ -42,6 +43,7 @@ const About = () => {
             email
           </a>
           <a
+            href={resume}
             style={{
               display: "block",
               border: "4px solid white",
