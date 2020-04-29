@@ -1,11 +1,7 @@
-@font-face {
-  font-family: "Amatic";
-  src: url("../assets/AmaticSC-Regular.ttf");
-}
-
 body {
   background-color: rgb(123, 135, 149);
-  font-family: "Amatic";
+  font-family: "Avenir Next", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
   color: white;
   font-size: 16pt;
 }
@@ -26,8 +22,6 @@ h1 {
 }
 
 p {
-  font-family: "Avenir Next", "Gill Sans", "Gill Sans MT", Calibri,
-    "Trebuchet MS", sans-serif;
   margin: 0;
 }
 
