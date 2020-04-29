@@ -9,11 +9,13 @@ const Portfolio = () => {
   return (
     <div
       style={{
+        position: "absolute",
+        width: "100%",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        margin: "64px auto",
+        padding: "64px 0",
       }}
     >
       {categories.map((category) => (

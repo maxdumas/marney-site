@@ -42,12 +42,14 @@ const Gallery = () => {
   return (
     <div
       style={{
+        position: "absolute",
+        width: "100%",
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         flexWrap: "wrap",
-
-        margin: "0 64px",
+        padding: "0 64px",
+        boxSizing: "border-box",
       }}
     >
       {projects.map(getProjectThumbnail)}

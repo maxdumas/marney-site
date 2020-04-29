@@ -46,7 +46,13 @@ const Project = () => {
   };
 
   return (
-    <article style={{ textAlign: "center", margin: "0 64px" }}>
+    <article
+      style={{
+        position: "absolute",
+        textAlign: "center",
+        margin: "0 64px",
+      }}
+    >
       <section
         style={{
           paddingBottom: "32px",

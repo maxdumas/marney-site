@@ -4,9 +4,9 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
-  Switch,
   useLocation,
 } from "react-router-dom";
+import { AnimatedSwitch } from "react-router-transition";
 import { Surface } from "gl-react-dom";
 
 import "./index.css";
@@ -56,7 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </header>
 
-        <Switch>
+        {/* TODO: We need to get these components to unmount when transitioned out */}
+        <AnimatedSwitch
+          atEnter={{ opacity: 0, marginTop: "25px" }}
+          atLeave={{ opacity: 0, marginTop: "25px" }}
+          atActive={{ opacity: 1, marginTop: 0 }}
+          style={{ position: "relative" }}
+        >
           <Route exact path="/">
             <Home onButtonClick={() => {}} />
           </Route>
@@ -72,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <Route path="/is">
             <About />
           </Route>
-        </Switch>
+        </AnimatedSwitch>
       </main>
     </Router>,
     document.getElementById("app")

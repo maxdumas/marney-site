@@ -12,6 +12,7 @@ const About = () => {
   return (
     <div
       style={{
+        position: "absolute",
         margin: "0 25%",
         display: "flex",
         flexDirection: "column",
