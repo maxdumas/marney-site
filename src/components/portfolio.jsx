@@ -13,7 +13,7 @@ const Portfolio = () => {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        margin: "0 auto",
+        margin: "64px auto",
       }}
     >
       {categories.map((category) => (
@@ -28,7 +28,7 @@ const Portfolio = () => {
             textAlign: "center",
             padding: "16px 0",
             margin: "0 16px",
-            fontSize: "34pt",
+            fontSize: "24pt",
           }}
         >
           {category.name}
