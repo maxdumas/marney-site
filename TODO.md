@@ -6,7 +6,7 @@ TODO:
 [x] Create simple YAML-based templating system to generate gallery content
 [ ] Correctly transition the look position for the background as you navigate. This should, again, be tied to the routing.
 [x] How to handle navigation between categories? Portfolio page?
-[ ] Create contact page
+[x] Create contact page
 [x] Templating engine supports markdown in the descriptions
 [ ] Fill in with all real content.
 

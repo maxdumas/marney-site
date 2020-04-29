@@ -25,28 +25,32 @@ const About = () => {
         <div
           style={{
             marginTop: "16px",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
           }}
         >
-          <span
+          <a
+            href={`mailto:${email}`}
             style={{
-              display: "inline-bock",
+              display: "block",
               border: "4px solid white",
               margin: "8px",
               padding: "8px",
             }}
           >
-            {email}
-          </span>
-          <span
+            email
+          </a>
+          <a
             style={{
-              display: "inline-bock",
+              display: "block",
               border: "4px solid white",
               margin: "8px",
               padding: "8px",
             }}
           >
             Resume
-          </span>
+          </a>
         </div>
       </div>
     </div>
