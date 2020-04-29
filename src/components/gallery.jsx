@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { getProjectsForCategory } from "../data";
 
@@ -18,9 +18,9 @@ const Gallery = () => {
     const imagefilename = project.images[0].filename;
 
     return (
-      <a
+      <Link
         key={project.id}
-        href={`/made/${project.id}`}
+        to={`/made/${project.id}`}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -37,7 +37,7 @@ const Gallery = () => {
           src={images[category][project.id][imagefilename]}
         />
         <span style={{ marginTop: "8px" }}>{project.title}</span>
-      </a>
+      </Link>
     );
   };
 

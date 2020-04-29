@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { getCategories } from "../data";
 
@@ -16,9 +17,9 @@ const Portfolio = () => {
       }}
     >
       {categories.map((category) => (
-        <a
+        <Link
           key={category.id}
-          href={`/makes/${category.id}`}
+          to={`/makes/${category.id}`}
           style={{
             display: "block",
             height: "100%",
@@ -31,7 +32,7 @@ const Portfolio = () => {
           }}
         >
           {category.name}
-        </a>
+        </Link>
       ))}
     </div>
   );
