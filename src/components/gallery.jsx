@@ -45,15 +45,22 @@ const Gallery = () => {
       style={{
         position: "absolute",
         width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        padding: "0 64px",
-        boxSizing: "border-box",
       }}
     >
-      {projects.map(getProjectThumbnail)}
+      <div
+        style={{
+          maxWidth: "1100px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          padding: "0 64px",
+          boxSizing: "border-box",
+          margin: "0 auto",
+        }}
+      >
+        {projects.map(getProjectThumbnail)}
+      </div>
     </div>
   );
 };
