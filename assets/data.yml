@@ -93,8 +93,12 @@ projects:
         film.
     - id: machinal
       title: Machinal
+      description: >
+        CalArts 2019 Production: Assistant Scenic Artist.
     - id: oedipus
       title: Oedipus
+      description: >
+        CalArts 2020 Production: Assistant Scenic Artist.
     - id: techniques
       title: Techniques
       description: >
