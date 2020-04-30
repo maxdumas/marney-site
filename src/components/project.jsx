@@ -24,7 +24,6 @@ const Project = () => {
       <a
         key={imageUrl}
         href={imageUrl}
-        target="_blank"
         style={{
           display: "inline-block",
           backgroundColor: "rgba(255, 255, 255, 0.3)",
@@ -41,7 +40,11 @@ const Project = () => {
           </span>
         )}
         <img
-          style={{ display: "block", width: "100%", objectFit: "contain" }}
+          style={{
+            objectFit: "contain",
+            maxHeight: "100vh",
+            maxWidth: "80vw",
+          }}
           src={imageUrl}
         ></img>
       </a>
@@ -53,7 +56,9 @@ const Project = () => {
       style={{
         position: "absolute",
         textAlign: "center",
-        margin: "0 64px",
+        padding: "0 64px",
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
       <section
@@ -72,8 +77,10 @@ const Project = () => {
       </section>
       <section
         style={{
-          columnWidth: 500,
-          columnGap: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {Object.values(images[project.category][project.id]).map(
