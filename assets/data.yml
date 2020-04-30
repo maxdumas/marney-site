@@ -104,6 +104,9 @@ projects:
       description: >
         Techniques that can be applied to various production work in film,
         theater, and installations.
+      images:
+        - filename: 0
+          name: Mucha (in-progress, delayed by COVID-19)
     - id: the-former-margaret-peterson
       title: The Former Margaret Peterson
       description: >
