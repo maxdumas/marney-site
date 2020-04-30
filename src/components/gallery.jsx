@@ -15,7 +15,7 @@ const Gallery = () => {
   }
 
   const getProjectThumbnail = (project) => {
-    const imagefilename = project.images[0].filename;
+    const imagefilename = images[category][project.id]["0"];
 
     return (
       <Link
@@ -32,7 +32,7 @@ const Gallery = () => {
       >
         <img
           style={{ height: "250px", width: "250px", objectFit: "cover" }}
-          src={images[category][project.id][imagefilename]}
+          src={imagefilename}
         />
         <span style={{ marginTop: "8px" }}>{project.title}</span>
       </Link>

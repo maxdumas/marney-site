@@ -2,76 +2,59 @@
 about:
   email: marney.h.miller@gmail.com
   bio: >
-    Hello! I am a creative space designer from Upstate New York who is currently working in Los Angeles, California. In 2018, I graduated with a BFA in Studio Art and a BFA Art History from New York University and will have a MFA in Applied Arts from California Institute of the Arts.
+    Hello! I am a creative designer from Upstate New York who is currently working in Los Angeles, California. In 2018, I graduated with a BFA in Studio Art and a BFA Art History from New York University and will have a MFA in Applied Arts from California Institute of the Arts. I work in conceptual design, and art direction. I strive to use color theory and cultural research to create pieces that feel tangible, true to their nature, and spectacular for viewers.
 categories:
-  - id: digital-work
-    name: Digital Work
-  - id: productions
+  - id: artwork
+    name: Artwork
+  - id: concept-work
+    name: Concept Work
+  - id: production-work
     name: Production Work
-  - id: art-work
-    name: Art Work
 projects:
-  digital-work:
-    - id: digital-art
-      title: Digital Art
-      description: >
-        I am the doom tree
-      images:
-        - name: Hizzy
-          filename: 0
-        - name: Hizzo
-          filename: 1
-        - name: Hizza
-          filename: 2
-        - name: Hizzd
-          filename: 3
-    - id: digital-art
-      title: Digital Art
-      description: >
-        I am the doom tree
-      images:
-        - name: Hizzy
-          filename: 0
-    - id: digital-art
-      title: Digital Art
-      description: >
-        I am the doom tree
-      images:
-        - name: Hizzy
-          filename: 0
-    - id: digital-art
-      title: Digital Art
-      description: >
-        I am the doom tree
-      images:
-        - name: Hizzy
-          filename: 0
+  artwork:
+    - id: copper-and-salt
+      title: Copper and Salt
+    - id: graphite-works
+      title: Graphite Works
+    - id: individual-works
+      title: Individual Works
+    - id: salt-ropes
+      title: Salt Ropes
+    - id: sculpture
+      title: Sculpture
+    - id: stand-up-ny
+      title: Stand Up NY
+  concept-work:
+    - id: a-closer-study
+      title: A Closer Study
     - id: dragons-den
-      title: Dragon's Den
+      title: Dragon's Den Restaurant
+    # - id: forrest-gump-hootch
+    #   title: "Forrest Gump: Hootch"
+    - id: galactoids
+      title: Galactoids
       description: >
-        Yo this project was sick yo
-      images:
-        - name: Slide 1
-          filename: Slide1
-        - name: Slide 2
-          filename: Slide2
-        - name: Slide 3
-          filename: Slide3
-        - name: Slide 4
-          filename: Slide4
-        - name: Slide 5
-          filename: Slide5
-  productions:
+        A sci-fi comedy film about a ragtag group of space cadets that no one
+        believes in. Their adventure to save the galaxy starts with them saving
+        their commanding officer’s cat.
+    - id: individual-concept-art
+      title: Individual Concept Art
+    - id: rougarou
+      title: Rougarou
+    - id: wakati
+      title: Wakati
+  production-work:
+    - id: castle-on-a-cloud
+      title: Castle on a Cloud
+    - id: machinal
+      title: Machinal
+    - id: oedipus
+      title: Oedipus
     - id: techniques
       title: Techniques
-      description: >
-        IIIIDDDDDDROOOOOOOO
-      images:
-        - name: Face
-          filename: face
-        - name: Mand
-          filename: mand
-        - name: Tiles
-          filename: tiles
-        - name: Wood
-          filename: wood
+    - id: the-former-margaret-peterson
+      title: The Former Margaret Peterson
+    - id: under-the-tree
+      title: Under the Tree
+    - id: westelm-ace-your-space
+      title: west elm Ace Your Space

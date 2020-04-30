@@ -16,12 +16,12 @@ const Project = () => {
     return "Page not found!";
   }
 
-  const getImageContainer = (image) => {
-    const imageUrl = images[project.category][project.id][image.filename];
+  const getImageContainer = (imageUrl, i) => {
+    const otherImageInfo = project.images && project.images[i];
 
     return (
       <a
-        key={image.filename}
+        key={imageUrl}
         href={imageUrl}
         target="_blank"
         style={{
@@ -34,9 +34,11 @@ const Project = () => {
           boxShadow: "5px 0px 10px rgba(0, 0, 0, 0.25)",
         }}
       >
-        <span style={{ display: "block", marginBottom: "16px" }}>
-          {image.name}
-        </span>
+        {otherImageInfo && (
+          <span style={{ display: "block", marginBottom: "16px" }}>
+            {image.name}
+          </span>
+        )}
         <img
           style={{ display: "block", width: "100%", objectFit: "contain" }}
           src={imageUrl}
@@ -63,7 +65,9 @@ const Project = () => {
         <header>
           <h1>{project.title}</h1>
         </header>
-        <ReactMarkdown source={project.description} />
+        <div style={{ display: "block", margin: "0 auto", maxWidth: "500px" }}>
+          <ReactMarkdown source={project.description} />
+        </div>
       </section>
       <section
         style={{
@@ -71,7 +75,9 @@ const Project = () => {
           columnGap: 0,
         }}
       >
-        {project.images.map(getImageContainer)}
+        {Object.values(images[project.category][project.id]).map(
+          getImageContainer
+        )}
       </section>
     </article>
   );
