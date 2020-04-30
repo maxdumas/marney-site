@@ -4,11 +4,12 @@ TODO:
 [x] Integrate per-page routing with the look position of the screen. Use gl-react.
 [x] Create gallery pages with sample content
 [x] Create simple YAML-based templating system to generate gallery content
-[ ] Correctly transition the look position for the background as you navigate. This should, again, be tied to the routing.
+[x] Correctly transition the look position for the background as you navigate. This should, again, be tied to the routing.
 [x] How to handle navigation between categories? Portfolio page?
 [x] Create contact page
 [x] Templating engine supports markdown in the descriptions
-[ ] Fill in with all real content.
+[x] Fill in with all real content.
+[ ] Fix page taking on the height of its longest previously loaded page
 
 Ideas:
 

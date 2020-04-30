@@ -24,6 +24,7 @@ const Gallery = () => {
         style={{
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           margin: "16px",
           padding: "16px",
           textAlign: "center",
