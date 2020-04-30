@@ -40,22 +40,34 @@ const BackgroundSurface = () => {
   );
 };
 
+const Nav = () => {
+  const { pathname } = useLocation();
+
+  return (
+    <header className="nav">
+      <div className="nav-left">
+        <Link to="/" className="logo">
+          <img className="logo" src={logoImage} />
+        </Link>
+      </div>
+      <div className="nav-right">
+        {!["/", "/makes"].find((p) => p === pathname) && (
+          <Link to="/makes" style={{ paddingRight: "16px" }}>
+            Portfolio
+          </Link>
+        )}
+        <Link to="/is">Contact/About</Link>
+      </div>
+    </header>
+  );
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   render(
     <Router>
       <BackgroundSurface />
       <main className="content">
-        <header className="nav">
-          <div className="nav-left">
-            <Link to="/" className="logo">
-              <img className="logo" src={logoImage} />
-            </Link>
-          </div>
-          <div className="nav-right">
-            <Link to="/is">Contact/About</Link>
-          </div>
-        </header>
-
+        <Nav />
         {/* TODO: We need to get these components to unmount when transitioned out */}
         <AnimatedSwitch
           atEnter={{ opacity: 0, marginTop: "25px" }}
