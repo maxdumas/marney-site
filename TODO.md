@@ -10,6 +10,8 @@ TODO:
 [x] Templating engine supports markdown in the descriptions
 [x] Fill in with all real content.
 [ ] Fix page taking on the height of its longest previously loaded page
+[ ] Control number of columns for each project
+[ ] Try out the logo with the colors and stuff
 
 Ideas:
 

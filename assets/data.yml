@@ -59,14 +59,10 @@ projects:
         Commission piece for a comedy club in NYC’s upper west side. Produced to
         match the venue’s historic and iconic style.
   concept-work:
-    - id: a-closer-study
-      title: A Closer Study
-    - id: dragons-den
-      title: Dragon's Den Restaurant
-      description: >
-        Pitch deck for a How to Train Your Dragon themed restaurant.
-    # - id: forrest-gump-hootch
-    #   title: "Forrest Gump: Hootch"
+    - id: rougarou
+      title: Rougarou
+    # id: coral
+    # title: "Children's Museum: Coral Reef"
     - id: galactoids
       title: Galactoids
       description: >
@@ -80,33 +76,21 @@ projects:
           name: Z brush made and colored rabbit
         - filename: 2
           name: Illustrator designed rainbow lobster in 3 styles
-    - id: rougarou
-      title: Rougarou
+    # - id: forrest-gump-hootch
+    #   title: "Forrest Gump: Hootch"
+    - id: dragons-den
+      title: Dragon's Den Restaurant
+      description: >
+        Pitch deck for a How to Train Your Dragon themed restaurant.
     - id: wakati
       title: Wakati
+    - id: a-closer-study
+      title: A Closer Study
   production-work:
-    - id: castle-on-a-cloud
-      title: Castle on a Cloud
+    - id: westelm-ace-your-space
+      title: West Elm Ace Your Space
       description: >
-        A short following a fight of a couple after a paternity test was done of
-        their daughter.  Lineage imagery was a key element in the making of this
-        film.
-    - id: machinal
-      title: Machinal
-      description: >
-        CalArts 2019 Production: Assistant Scenic Artist.
-    - id: oedipus
-      title: Oedipus
-      description: >
-        CalArts 2020 Production: Assistant Scenic Artist.
-    - id: techniques
-      title: Techniques
-      description: >
-        Techniques that can be applied to various production work in film,
-        theater, and installations.
-      images:
-        - filename: 0
-          name: Mucha (in-progress, delayed by COVID-19)
+        A commercial selected for a West Elm competition.
     - id: the-former-margaret-peterson
       title: The Former Margaret Peterson
       description: >
@@ -120,7 +104,25 @@ projects:
         A short thriller film about a schizophrenic woman and her misconception
         about motherhood.  In the film, there are 3 sets of reality that reflect
         the mental state of the main character.
-    - id: westelm-ace-your-space
-      title: west elm Ace Your Space
+    - id: castle-on-a-cloud
+      title: Castle on a Cloud
       description: >
-        A commercial selected for a West Elm competition.
+        A short following a fight of a couple after a paternity test was done of
+        their daughter.  Lineage imagery was a key element in the making of this
+        film.
+    - id: techniques
+      title: Techniques
+      description: >
+        Techniques that can be applied to various production work in film,
+        theater, and installations.
+      images:
+        - filename: 0
+          name: Mucha (in-progress, delayed by COVID-19)
+    - id: oedipus
+      title: Oedipus
+      description: >
+        CalArts 2020 Production: Assistant Scenic Artist.
+    - id: machinal
+      title: Machinal
+      description: >
+        CalArts 2019 Production: Assistant Scenic Artist.
