@@ -7,7 +7,7 @@ import resume from "../../assets/resume.pdf";
 import { getAboutData } from "../data";
 
 const About = () => {
-  const { email, bio } = getAboutData();
+  const { email, bio, statement } = getAboutData();
 
   return (
     <div
@@ -30,6 +30,9 @@ const About = () => {
         <div style={{ flexGrow: 1, marginLeft: "8px" }}>
           <ReactMarkdown>{bio}</ReactMarkdown>
         </div>
+      </div>
+      <div>
+        <ReactMarkdown>{statement}</ReactMarkdown>
       </div>
       <div
         style={{

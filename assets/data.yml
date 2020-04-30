@@ -2,7 +2,40 @@
 about:
   email: marney.h.miller@gmail.com
   bio: >
-    Hello! I am a creative designer from Upstate New York who is currently working in Los Angeles, California. In 2018, I graduated with a BFA in Studio Art and a BFA Art History from New York University and will have a MFA in Applied Arts from California Institute of the Arts. I work in conceptual design, and art direction. I strive to use color theory and cultural research to create pieces that feel tangible, true to their nature, and spectacular for viewers.
+    Hello! I am a creative designer from Upstate New York who is currently
+    working in Los Angeles, California. In 2018, I graduated with a BFA in
+    Studio Art and a BFA Art History from New York University and will have a
+    MFA in Applied Arts from California Institute of the Arts. I work in
+    conceptual design, and art direction. I strive to use color theory and
+    cultural research to create pieces that feel tangible, true to their nature,
+    and spectacular for viewers.
+
+  statement: >
+    I like to reflect on and understand that the world is full of adaptations
+    that serve a purpose. Beauty and intrigue are apart of these adaptions as
+    well as being their own element within the world. A character will wear a
+    coat in a cold environment, a tree will grow to face the light, an office
+    will be structured for productivity. It is why beautiful designs are not
+    strictly beautiful in the traditional definition of the word. Rather, they
+    can traditionally disturbing- disgusting even. However, they are still
+    beautiful because they make sense, they can be understood to anyone no
+    matter how fantastical because they understand the basic truth of the
+    design. They have something about them that holds your gaze, forces you to
+    stay with them, and when your eyesight finally leaves them- you remember
+    them. 
+
+
+
+    I strive to have my work stay with people not only because of intrigue, but
+    because I work to be sure that it can be consumed as an individual; that it
+    allows an individual self-reflection through external adventures. My
+    adventure starts as I always research and investigate art history, art
+    theory so that I may communicate a tangible story. Creative and dynamic
+    designs are vital in creating intriguing worlds and in my work, but the
+    designs have to make logical narrative sense.  It is why all I linger and
+    consider all aspects and details of my designs asking if they fit the
+    narrative and enhance the immersive environment, object, and or character I
+    strive to create.
 categories:
   - id: artwork
     name: Artwork
@@ -14,21 +47,36 @@ projects:
   artwork:
     - id: copper-and-salt
       title: Copper and Salt
+      description: >
+        Works all done using copper and salt. Experiments were done to see how
+        oxidization and bonding formed when the two elements were stressed and
+        had water, heat, and time added to them.
     - id: graphite-works
       title: Graphite Works
     - id: individual-works
       title: Individual Works
     - id: salt-ropes
       title: Salt Ropes
+      description: >
+        Hung ropes that were exposed to highly concentrated salt baths and
+        crystalized.
     - id: sculpture
       title: Sculpture
+      images:
+        - filename: 0
+          name: Horse modeled in Monster clay
     - id: stand-up-ny
       title: Stand Up NY
+      description: >
+        Commission piece for a comedy club in NYC’s upper west side. Produced to
+        match the venue’s historic and iconic style.
   concept-work:
     - id: a-closer-study
       title: A Closer Study
     - id: dragons-den
       title: Dragon's Den Restaurant
+      description: >
+        Pitch deck for a How to Train Your Dragon themed restaurant.
     # - id: forrest-gump-hootch
     #   title: "Forrest Gump: Hootch"
     - id: galactoids
@@ -39,6 +87,11 @@ projects:
         their commanding officer’s cat.
     - id: individual-concept-art
       title: Individual Concept Art
+      images:
+        - filename: 0
+          name: Z brush made and colored rabbit
+        - filename: 2
+          name: Illustrator designed rainbow lobster in 3 styles
     - id: rougarou
       title: Rougarou
     - id: wakati
@@ -46,15 +99,33 @@ projects:
   production-work:
     - id: castle-on-a-cloud
       title: Castle on a Cloud
+      description: >
+        A short following a fight of a couple after a paternity test was done of
+        their daughter.  Lineage imagery was a key element in the making of this
+        film.
     - id: machinal
       title: Machinal
     - id: oedipus
       title: Oedipus
     - id: techniques
       title: Techniques
+      description: >
+        Techniques that can be applied to various production work in film,
+        theater, and installations.
     - id: the-former-margaret-peterson
       title: The Former Margaret Peterson
+      description: >
+        Concept art for A short film following the struggles of a modern mother
+        after her son was involved in an accident. For the design, immense
+        thought and care went into the color themes and textures to highlight
+        character influence.
     - id: under-the-tree
       title: Under the Tree
+      description: >
+        A short thriller film about a schizophrenic woman and her misconception
+        about motherhood.  In the film, there are 3 sets of reality that reflect
+        the mental state of the main character.
     - id: westelm-ace-your-space
       title: west elm Ace Your Space
+      description: >
+        A commercial selected for a West Elm competition.

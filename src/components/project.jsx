@@ -17,7 +17,8 @@ const Project = () => {
   }
 
   const getImageContainer = (imageUrl, i) => {
-    const otherImageInfo = project.images && project.images[i];
+    const otherImageInfo =
+      project.images && project.images.find((im) => im.filename === i);
 
     return (
       <a
@@ -36,7 +37,7 @@ const Project = () => {
       >
         {otherImageInfo && (
           <span style={{ display: "block", marginBottom: "16px" }}>
-            {image.name}
+            {otherImageInfo.name}
           </span>
         )}
         <img
