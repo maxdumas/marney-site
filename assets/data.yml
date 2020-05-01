@@ -76,10 +76,10 @@ projects:
           name: Z brush made and colored rabbit
         - filename: 2
           name: Illustrator designed rainbow lobster in 3 styles
-    # - id: forrest-gump-hootch
-    #   title: "Forrest Gump: Hootch"
-    #   description: >
-    #     I do not own Forrest Gump.
+    - id: forrest-gump-hootch
+      title: "Forrest Gump: Hootch"
+      description: >
+        I do not own Forrest Gump.
     - id: dragons-den
       title: Dragon's Den Restaurant
       description: >
