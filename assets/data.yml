@@ -61,8 +61,8 @@ projects:
   concept-work:
     - id: rougarou
       title: Rougarou
-    # id: coral
-    # title: "Children's Museum: Coral Reef"
+    - id: childrens-museum-coral-reef
+      title: "Children's Museum: Coral Reef"
     - id: galactoids
       title: Galactoids
       description: >
