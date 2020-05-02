@@ -63,6 +63,8 @@ projects:
       title: Rougarou
     - id: childrens-museum-coral-reef
       title: "Children's Museum: Coral Reef"
+      description: >
+        Pitch deck for an exhibition in a Coral Reef theme Children's Museum.
     - id: galactoids
       title: Galactoids
       description: >
